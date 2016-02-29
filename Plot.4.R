@@ -1,8 +1,12 @@
 x = read.table("household_power_consumption.txt", header = TRUE, sep = ';')
 x$Date <- as.Date(x$Date, "%d/%m/%Y")
 x <- with(x,x[(Date >= "2007-02-01" & Date <= "2007-02-02"),])
-png(filename = "Plot 4", width = 480, height = 480)
 
+par(mfrow = c(2,2))
+
+png(filename = "Plot 4.png", width = 480, height = 480)
+
+par(mfrow = c(2,2))
 #Plot 1
 hist(as.numeric(x$Global_active_power), col = "red", main = "Global Active Power", xlab = " Global Active Power (kilowatts)")
 
@@ -27,3 +31,4 @@ lines(x$TimeDate, x$Global_reactive_power)
 
 dev.off
 
+##I somehow got this to work...not sure how exactly. Having issues with saving it as a .png

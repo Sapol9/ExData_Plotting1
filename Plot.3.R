@@ -2,7 +2,7 @@ x = read.table("household_power_consumption.txt", header = TRUE, sep = ';')
 x$Date <- as.Date(x$Date, "%d/%m/%Y")
 x <- with(x,x[(Date >= "2007-02-01" & Date <= "2007-02-02"),])
 x$TimeDate <- as.POSIXct(paste(x$Date, x$Time), format = "%Y-%m-%d %H:%M:%S")
-png(filename = "Plot 3", width = 480, height = 480)
+png(filename = "Plot 3.png", width = 480, height = 480)
 x$Sub_metering_1 <- as.numeric(x$Sub_metering_1)
 x$Sub_metering_2 <- as.numeric(x$Sub_metering_2)
 x$Sub_metering_3 <- as.numeric(x$Sub_metering_3)
@@ -10,7 +10,7 @@ plot(x$TimeDate, x$Sub_metering_1,pch = '.', col = "black", xlab = "Date/Time", 
 lines(x$TimeDate, x$Sub_metering_1,col = "black")
 lines(x$TimeDate, x$Sub_metering_2,col = "red")
 lines(x$TimeDate, x$Sub_metering_3, col = "blue")
-legend("topright", legend=c("Sub_metering_1            ", "Sub_metering_2", "Sub_metering_3"), cex = 1, pt.cex = 1,lty=c(1,1,1), lwd=c(1,1,1), col=c("black", "red","blue"))
+legend("topright", legend=c("Sub_metering_1 ", "Sub_metering_2", "Sub_metering_3"), cex = 1, pt.cex = 1,lty=c(1,1,1), lwd=c(1,1,1), col=c("black", "red","blue"))
 dev.off()
 
 
